@@ -50,7 +50,7 @@ def main(data_file, annotation_file, sample_rate=5000):
 
     model = ResNet18(num_classes=3)
 
-    trainer = L.Trainer(max_epochs=200,log_every_n_steps=10, accelerator="gpu", devices=1)
+    trainer = L.Trainer(max_epochs=200,log_every_n_steps=15, default_root_dir='/app/Data/resnetcwt', accelerator="gpu", devices=1)
     trainer.fit(model, train_loader, valid_loader)
     #trainer.test(GRUc, dataloaders=test_loader)
 
