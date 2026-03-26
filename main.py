@@ -56,5 +56,5 @@ def main(data_file, annotation_file, sample_rate=5000):
 
 
 if __name__ == "__main__":
-    main('/app/Data/WR/WR5_Run4.hdf5', '/app/Data/tmp/1sec_epocs.pkl')
+    main('/app/Data/WR/WR5_Run4.hdf5', '/app/Data/WR/Annotations/1sec_epocs.pkl')
 
