@@ -38,9 +38,6 @@ class TrainerBase(L.LightningModule):
     def training_step(self, batch: tuple[torch.Tensor, torch.Tensor], batch_idx: int) -> None:
         data, labels = batch
         
-        means = torch.Tensor.mean(data, dim=0, keepdim=True)
-        stds = torch.Tensor.std(data, dim=0, keepdim=True)
-        data = (data - means) / (stds + 1e-6)
         
         #data = data.unsqueeze(-1)  # Add a channel dimension
         data = data.to(self.device).float()
@@ -54,10 +51,7 @@ class TrainerBase(L.LightningModule):
 
     def validation_step(self, batch: tuple[torch.Tensor, torch.Tensor], batch_idx: int) -> None:
         data, labels = batch
-        
-        means = torch.Tensor.mean(data, dim=0, keepdim=True)
-        stds = torch.Tensor.std(data, dim=0, keepdim=True)
-        data = (data - means) / (stds + 1e-6)
+  
         
         #data = data.unsqueeze(-1)  # Add a channel dimension
         data = data.to(self.device).float()
@@ -93,9 +87,7 @@ class TrainerBase(L.LightningModule):
     def test_step(self, batch: tuple[torch.Tensor, torch.Tensor], batch_idx: int) -> None:
         data, labels = batch
         
-        means = torch.Tensor.mean(data, dim=0, keepdim=True)
-        stds = torch.Tensor.std(data, dim=0, keepdim=True)
-        data = (data - means) / (stds + 1e-6)
+
         
         data = data.unsqueeze(-1)  # Add a channel dimension
         data = data.to(self.device).float()
