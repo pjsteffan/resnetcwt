@@ -6,7 +6,6 @@ from torch.utils.data import Dataset
 from collections import Counter
 from scipy.interpolate import interp1d
 from scipy.signal import butter, filtfilt, welch
-from PyEMD import EMD
 from wavelets import WaveletConfig, CWTImagePipeline
 
 
