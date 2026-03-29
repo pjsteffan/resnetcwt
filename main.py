@@ -48,7 +48,7 @@ def main(data_file, annotation_file, sample_rate=5000):
     #test_loader = DataLoader(test_set, batch_size=500)
     
 
-    model = ResNet18(num_classes=3)
+    model = ResNet18(num_classes=2)
 
     trainer = L.Trainer(max_epochs=200,log_every_n_steps=15, default_root_dir='/app/Data/resnetcwt', accelerator="gpu", devices=1)
     trainer.fit(model, train_loader, valid_loader)
