@@ -57,6 +57,9 @@ class WRsmallepoch(Dataset):
         end_time = annotation['stop_time']
         label = annotation['epoch_id']
 
+        if label == 2:
+            label = 0
+
         start_index = int(start_time * self.sample_rate)
         
         if self.single_channel_flag:
@@ -105,6 +108,8 @@ class WRsmallepoch(Dataset):
 
                 epoch_data = np.stack([ch1_data_low, ch2_data_low,ch1_data_mid, ch2_data_mid,ch1_data_high, ch2_data_high], axis=0)  # Shape: (2, num_samples)
                 epoch_data = epoch_data.transpose(1, 0)  # Shape: (num_samples, 2)
+
+            
 
             return (epoch_data, label)
 
