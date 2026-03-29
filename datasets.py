@@ -57,8 +57,7 @@ class WRsmallepoch(Dataset):
         end_time = annotation['stop_time']
         label = annotation['epoch_id']
 
-        if label == 2:
-            label = 0
+
 
         start_index = int(start_time * self.sample_rate)
         
@@ -265,6 +264,9 @@ class WRsmallepoch_CWT(Dataset):
         start_time = annotation['start_time']
         end_time = annotation['stop_time']
         label = annotation['epoch_id']
+
+        if label == 2:
+            label = 0
 
         start_index = int(start_time * self.sample_rate)
         
