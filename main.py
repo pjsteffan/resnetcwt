@@ -7,7 +7,7 @@ from torchvision.models import resnet18
 import lightning as L
 
 from datasets import WRsmallepoch_CWT
-from models import ResNet18
+from models import ResNet18, equal_var_init
 
 
 def main(data_file, annotation_file, sample_rate=5000):
@@ -49,6 +49,7 @@ def main(data_file, annotation_file, sample_rate=5000):
     
 
     model = ResNet18(num_classes=2)
+    equal_var_init(model)
 
     trainer = L.Trainer(max_epochs=200,log_every_n_steps=15, default_root_dir='/app/Data/resnetcwt', accelerator="gpu", devices=1)
     trainer.fit(model, train_loader, valid_loader)
